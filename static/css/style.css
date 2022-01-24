@@ -1,0 +1,10 @@
+.box-element{
+    background-color: white;
+    box-shadow: rgb(88, 87, 87) 0 0 16px;
+    border-radius: 4px;
+
+}
+
+.product{
+    border-radius: 0 0 4px 4px;
+}

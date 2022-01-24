@@ -1,0 +1,45 @@
+{% extends 'base/main.html' %} 
+{% load static %} 
+
+{% block content %}
+<div class="flex mt-10">
+    <div class="flex flex-col shadow shadow-gray-500 p-5 pl-10 pr-10">
+        <h5 class="border-b border-lighter text-gray-600">Customer's Info</h5>
+            <br>
+            <form class="flex justify-between">
+                
+                <div class="flex flex-col">
+                   
+                    <input type="text" placeholder="Name" class="border border-slate-400 placeholder:italic placeholder:pl-1 rounded"><br>
+                    <input type="text" placeholder="Email" class="border border-slate-400 rounded placeholder:italic placeholder:pl-1">
+                </div>
+                <div class="pl-3">
+                   
+                    <form>
+                        <div class="flex flex-col">
+                   
+                            <input type="text" placeholder="Address" class="border border-slate-400 placeholder:italic placeholder:pl-1 rounded"><br>
+                            <input type="text" placeholder="City" class="border border-slate-400 rounded placeholder:italic placeholder:pl-1"><br>
+                            <input type="text" placeholder="State" class="border border-slate-400 rounded placeholder:italic placeholder:pl-1"><br>
+                            <input type="text" placeholder="Zip Code" class="border border-slate-400 rounded placeholder:italic placeholder:pl-1"><br>
+
+                        </div>
+                    </form>
+
+                </div>
+                <div class="pl-3">
+                    <small class="italic text-slate-400">PayPal Options</small> <i class="fa fa-paypal italic text-slate-400"></i>
+                </div>
+                <br>
+                
+                <input class="bg-sky-400 text-white font-sans rounded p-1 cursor-pointer" type="submit" value="Continue">
+            </form>
+            
+       
+    </div>
+    
+    
+</div>
+
+
+{% endblock content %}
