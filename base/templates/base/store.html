@@ -1,31 +1,22 @@
 {% extends 'base/main.html' %}
 {% load static %}
 {% block content %}
-
-<div class="grid grid-cols-3 gap-10 p-6">
-    <div>
-        <img class="w-full h-200 shadow shadow-slate-400" src="{% static 'img/dol.jpg' %}">
-        <div class="shadow shadow-gray-300 border-b border-lighter p-10"><h6><strong>First</strong></h6>
-        <button class="bg-sky-500 text-white p-2 rounded">Add to Cart</button>
-        <button class="bg-green-500 text-white p-2 rounded"><a href="#">View</a></button>
-        <h4 class="inline-block float-right text-lg text-gray-800 font-medium">$20</h4>
+<div class="flex flex-wrap justify-center flex-row">
+{% for product in products %}
+<div class="flex">
+    <div class="ml-8 mt-3">
+        {% if product.image %}
+        <img class="shadow shadow-slate-400" src="{{product.image.url}}" width=500 height=200>
+        {% endif %}
+        <div class="shadow shadow-gray-300 border-b border-lighter p-10"><h6><strong>{{product.title}}</strong></h6>
+        <button class="bg-sky-500 text-white p-2 rounded mt-1">Add to Cart</button>
+        <button class="bg-green-500 text-white p-2 rounded mt-1"><a href="#">View</a></button>
+        <h4 class="inline-block float-right text-lg text-gray-800 font-medium">$ {{product.price|floatformat:2}}</h4>
         </div>
     </div>
-    <div>
-        <img class="w-full h-200 shadow shadow-slate-400" src="{% static 'img/dol.jpg' %}">
-        <div class="shadow shadow-gray-300 border-b border-lighter p-10"><h6><strong>Second</strong></h6>
-            <button class="bg-sky-500 text-white p-2 rounded">Add to Cart</button>
-            <button class="bg-green-500 text-white p-2 rounded"><a href="#">View</a></button>
-            <h4 class="inline-block float-right text-lg text-gray-800 font-medium">$20</h4>
-        </div>
-    </div>
-    <div>
-        <img class="w-full h-200 shadow shadow-slate-400" src="{% static 'img/dol.jpg' %}">
-        <div class="shadow shadow-gray-300 border-b border-lighter p-10"><h6><strong>Third</strong></h6>
-            <button class="bg-sky-500 text-white p-2 rounded">Add to Cart</button>
-            <button class="bg-green-500 text-white p-2 rounded"><a href="#">View</a></button>
-            <h4 class="inline-block float-right text-lg text-gray-800 font-medium">$20</h4>
-        </div>
-    </div>
+    
+   
+</div>
+{% endfor %}
 </div>
 {% endblock content %}
