@@ -3,41 +3,74 @@
 {% block content %}
 
 <div class="mt-10 flex flex-col">
-    <div class="justify-between shadow shadow-gray-400">
-        <button class="text-white bg-slate-800 rounded m-2 p-1"><a href="{% url 'store' %}"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Continue Shopping</a></button>
-        
-        
-        <br>
-        <br>
-        <table class="table-auto border-t border-lighter">
-            <tr>
-                <th class="p-5"><h5 class="mr-10">Items: <strong>3</strong></h5></th>
-                <th><h5 class="mr-10">Total: <strong>$56</strong></h5></th>
-                <th class="p-5"><button class="rounded bg-green-500 text-white"><a href="#" class="float-right m-1">Checkout</a></button></th>
-            </tr>
+    <div class="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
+        <header class="px-5 py-4 border-b border-gray-100">
+            <button class="rounded bg-sky-500 text-white p-1"> <i class="fa fa-arrow-left text-xs text-white cursor-pointer" aria-hidden="true"></i> Continue Shopping</button>
+        </header>
+        <div class="p-3">
+            <div class="overflow-x-auto">
+                <table class="table-auto w-full">
+                    <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+                        <tr>
+                            <th class="p-2 whitespace-nowrap">
+                                <div class="font-bold text-left text-black">Items: {{order.get_cart_items}}</div>
+                            </th>
+                            <th class="p-2 whitespace-nowrap">
+                                <div class="font-bold text-left text-black">Total: $ {{order.get_cart_total}}</div>
+                            </th>
+                            <th class="p-2 whitespace-nowrap">
+                                <div class="font-bold text-left"><button class="rounded bg-green-500 p-2 text-white font-bold">Checkout</button></div>
+                            </th>
+                        </tr>
+        </thead>
         </table>
-    </div>
+        </div>
     <br>
-    <div class="shadow shadow-gray-400 pb-5 pt-5 pl-2 pr-2">
-        <div class="flex flex-row justify-between">
-            
-            <div><strong>Item</strong></div>
-            <div><strong>Price</strong></div>
-            <div><strong>Quantity</strong></div>
-            <div><strong>Total</strong></div>
-        </div>
-
-        <div class="flex flex-row justify-between pr-3">
-            <div><a class="hover:text-sky-600" href="#">{{orderitem.product}}</a></div>
-            
-            <div class="pr-4">$ 4</div>
-            <div><p>2 <i class="fa fa-arrow-up text-xs cursor-pointer hover:text-sky-600" aria-hidden="true"></i>
+    <div class="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
+        <header class="px-5 py-4 border-b border-gray-100">
+            <h2 class="font-semibold text-gray-800">Your basket</h2>
+        </header>
+        <div class="p-3">
+            <div class="overflow-auto">
+                <table class="table-auto w-full">
+                    <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+                        <tr>
+                            <th class="p-2 whitespace-nowrap">
+                                <div class="font-semibold text-left">Item</div>
+                            </th>
+                            <th class="p-2 whitespace-nowrap">
+                                <div class="font-semibold text-left">Price</div>
+                            </th>
+                            <th class="p-2 whitespace-nowrap">
+                                <div class="font-semibold text-left">Quantity</div>
+                            </th>
+                            <th class="p-2 whitespace-nowrap">
+                                <div class="font-semibold text-left">Total</div>
+                            </th>
+                        </tr>
+                    </thead>
+        {% for item in items %}
+                    <tbody class="text-sm divide-y divide-gray-100">
+                        <tr>
+                            <td class="p-2 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3"><img class="rounded-full" src="{{ item.product.image.url }}"></div>
+                                    <div class="font-medium text-gray-800">{{item.product.title}}</div>
+                                </div>
+                            </td>
+                            <td class="p-2 whitespace-nowrap">
+                                <div class="text-left">$ {{item.product.price|floatformat:2}}</div>
+                            </td>
+                            <td class="p-2 whitespace-nowrap">
+                                <div class="text-left font-medium text-green-500">{{item.quantity}}  <i class="fa fa-arrow-up text-xs cursor-pointer hover:text-sky-600" aria-hidden="true"></i>
                     
-                    <i class="fa fa-arrow-down text-xs cursor-pointer hover:text-sky-600" aria-hidden="true"></i>
-                </p>
-            </div>
-            <div>$ 4</div>
-        </div>
+                                    <i class="fa fa-arrow-down text-xs cursor-pointer hover:text-sky-600" aria-hidden="true"></i></div>
+                            </td>
+                            <td class="p-2 whitespace-nowrap">
+                                <div class="text-lg text-center">$ {{item.get_total}}</div>
+                            </td>
+                        </tr>
+        {% endfor %}
     </div>
 </div>
 
