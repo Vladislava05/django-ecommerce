@@ -2,10 +2,11 @@
 {% load static %} 
 
 {% block content %}
-<div class="flex mt-10">
+<div class="flex mt-20">
     <div class="flex flex-col shadow shadow-gray-500 p-5 pl-10 pr-10">
         <h5 class="border-b border-lighter text-gray-600">Customer's Info</h5>
             <br>
+            
             <form class="flex justify-between">
                 
                 <div class="flex flex-col">
@@ -37,6 +38,67 @@
             
        
     </div>
+    <div class="w-full max-w-2xl mx-auto bg-white shadow shadow-gray-500 rounded-sm">
+        <header class="px-5 py-4 border-b border-gray-100">
+            <h5 class="text-gray-600">Order Summary</h5>
+        </header>
+        <div class="p-3">
+            <div class="overflow-x-auto">
+                <table class="table-auto w-full">
+                    <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+                        <tr>
+                            <th class="p-2 whitespace-nowrap">
+                                <div class="font-bold text-left text-gray-600">Items: {{order.get_cart_items}}</div>
+                            </th>
+                            <th class="p-2 whitespace-nowrap">
+                                <div class="font-bold text-left text-gray-600">Total: $ {{order.get_cart_total}}</div>
+                            </th>
+                            
+                        </tr>
+                        <div class="overflow-auto">
+                            <table class="table-auto w-full">
+                                <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+                                    <tr>
+                                        <th class="p-2 whitespace-nowrap">
+                                            <div class="font-semibold text-left">Item</div>
+                                        </th>
+                                        <th class="p-2 whitespace-nowrap">
+                                            <div class="font-semibold text-left">Price</div>
+                                        </th>
+                                        <th class="p-2 whitespace-nowrap">
+                                            <div class="font-semibold text-left">Quantity</div>
+                                        </th>
+                                        <th class="p-2 whitespace-nowrap">
+                                            <div class="font-semibold text-left">Total</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                    {% for item in items %}
+                                <tbody class="text-sm divide-y divide-gray-100">
+                                    <tr>
+                                        <td class="p-2 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <div class="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3"><img class="rounded-full" src="{{ item.product.image.url }}"></div>
+                                                <div class="font-medium text-gray-800">{{item.product.title}}</div>
+                                            </div>
+                                        </td>
+                                        <td class="p-2 whitespace-nowrap">
+                                            <div class="text-left">$ {{item.product.price|floatformat:2}}</div>
+                                        </td>
+                                        <td class="p-2 whitespace-nowrap">
+                                            <div class="text-left font-medium text-green-500">{{item.quantity}}  <i class="fa fa-arrow-up text-xs cursor-pointer hover:text-sky-600" aria-hidden="true"></i>
+                                
+                                                <i class="fa fa-arrow-down text-xs cursor-pointer hover:text-sky-600" aria-hidden="true"></i></div>
+                                        </td>
+                                        <td class="p-2 whitespace-nowrap">
+                                            <div class="text-lg text-center">$ {{item.get_total}}</div>
+                                        </td>
+                                    </tr>
+                    {% endfor %}
+                </div>
+        </thead>
+        </table>
+        </div>
     
     
 </div>
