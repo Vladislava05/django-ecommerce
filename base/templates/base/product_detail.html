@@ -3,7 +3,7 @@
 {% block content %}
 <div>
     
-        <button class="rounded bg-sky-500 text-white p-1 mt-2"> <i class="fa fa-arrow-left text-xs text-white cursor-pointer" aria-hidden="true"></i> Continue Shopping</button>
+        <button class="rounded bg-sky-500 text-white p-1 mt-2"><a href="{% url 'store' %}"> <i class="fa fa-arrow-left text-xs text-white cursor-pointer" aria-hidden="true"></i> Continue Shopping</a></button>
     
         <div class="ml-8 mt-5">
             {% if product.image %}

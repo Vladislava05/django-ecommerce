@@ -22,8 +22,8 @@
               <input type='text' class="rounded" name='search-area' value="{{search_input}}">
               <input class="button rounded bg-slate-800" type="submit" value='Search' >
             </form>
-            <button class="mr-3 hover:text-cyan-400 active:text-cyan-4005 text-xl">Store</button>
-            <button class="mr-3 hover:text-cyan-400 active:text-cyan-4005 text-xl"><i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
+            <button class="mr-3 hover:text-cyan-400 active:text-cyan-4005 text-xl"><a href="{% url 'store' %}">Store</a></button>
+            <button class="mr-3 hover:text-cyan-400 active:text-cyan-4005 text-xl"><a href="{% url 'cart' %}"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></button>
             <button class="rounded bg-amber-400 p-1 text-xl mr-2">Login</button>
           </div>
             

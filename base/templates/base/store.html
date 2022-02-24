@@ -9,7 +9,7 @@
         <img class="shadow shadow-slate-400" src="{{product.image.url}}" width=500 height=200>
         {% endif %}
         <div class="shadow shadow-gray-300 border-b border-lighter p-10"><h6><strong>{{product.title}}</strong></h6>
-        <button class="bg-sky-500 text-white p-2 rounded mt-1">Add to Cart</button>
+        <button class="bg-sky-500 text-white p-2 rounded mt-1"><a href="{% url 'cart' %}">Add to Cart</a></button>
         <button class="bg-green-500 text-white p-2 rounded mt-1"><a href="{% url 'product' product.pk %}">View</a></button>
         <h4 class="inline-block float-right text-lg text-gray-800 font-medium">$ {{product.price|floatformat:2}}</h4>
         </div>
