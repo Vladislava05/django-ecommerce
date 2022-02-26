@@ -12,6 +12,27 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/e81d17d39f.js" crossorigin="anonymous"></script>
     <title>Django Store</title>
+
+    <script type="text/javascript">
+      var user = '{{request.user}}'
+      function getToken(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+const csrftoken = getToken('csrftoken');
+
+    </script>
 </head>
 <body>
     <div id="app">
@@ -39,5 +60,7 @@
 
     
    
+    
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
