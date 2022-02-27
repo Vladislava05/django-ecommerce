@@ -86,9 +86,7 @@
                                             <div class="text-left">$ {{item.product.price|floatformat:2}}</div>
                                         </td>
                                         <td class="p-2 whitespace-nowrap">
-                                            <div class="text-left font-medium text-green-500">{{item.quantity}}  <i class="fa fa-arrow-up text-xs cursor-pointer hover:text-sky-600" aria-hidden="true"></i>
-                                
-                                                <i class="fa fa-arrow-down text-xs cursor-pointer hover:text-sky-600" aria-hidden="true"></i></div>
+                                            <div class="text-left font-medium text-gray-800">x {{item.quantity}}  
                                         </td>
                                         <td class="p-2 whitespace-nowrap">
                                             <div class="text-lg text-center">$ {{item.get_total}}</div>
@@ -102,6 +100,12 @@
     
     
 </div>
+<script type="text/javascript">
+    var shipping = '{{order.shipping}}'
 
+    if(shipping == 'False'){
+        document.getElementById('shipping-info').innerHTML=''
+    }
+</script>
 
 {% endblock content %}
