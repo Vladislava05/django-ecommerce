@@ -28,12 +28,13 @@
                     </form>
 
                 </div>
-                <div class="pl-3">
+                <div class="pl-3 pt-3">
+                    <button class="rounded p-2 text-white bg-green-500" id="make-payment">Make Payment</button>
                     <small class="italic text-slate-400">PayPal Options</small> <i class="fa fa-paypal italic text-slate-400"></i>
                 </div>
                 <br>
                 
-                <input class="bg-sky-400 text-white font-sans rounded p-1 cursor-pointer" type="submit" value="Continue">
+                <!--<input class="bg-sky-400 text-white font-sans rounded p-1 cursor-pointer" type="submit" value="Continue">-->
             </form>
             
        
@@ -105,6 +106,17 @@
 
     if(shipping == 'False'){
         document.getElementById('shipping-info').innerHTML=''
+    }
+    if(user != 'AnonymousUser'){
+            document.getElementById('user-info').innerHTML=''
+        }
+    
+    document.getElementById('make-payment').addEventListener('click', function(e){
+        submitFormData()
+    })
+    function submitFormData(){
+        
+
     }
 </script>
 
